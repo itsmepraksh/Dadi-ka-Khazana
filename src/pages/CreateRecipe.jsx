@@ -1,13 +1,23 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form"
+import { RecipeContext } from "../context/DataContext";
 
  
 
 const CreateRecipe = () => {
 
+  const {recipe , setRecipe} = useContext(RecipeContext);
+
+
+
     const {register,reset , handleSubmit , formState:{errors}} = useForm();
 
     const submitHandler = (data)=>{
         console.log(data)
+
+        const copyRecipe = [...recipe];
+        copyRecipe.push(data);
+        setRecipe(copyRecipe);
         reset()
     }
   return (
