@@ -9,7 +9,7 @@ const Nav = () => {
     <div className="w-full ">
       <div id="nav-data" className=" p-5 flex flex-row-reverse md:flex-row items-center  justify-between items-center">
         <FontAwesomeIcon className="text-2xl" icon={faUser} />
-        <h1 className="text-red-300 font-bold text-2xl md:w-[40%]">
+        <h1 className="text-red-300 font-['GilroyBold'] text-2xl md:w-[40%]">
           Dadi ka Kazana
         </h1>
         <h2 onClick={() => setToggle(!toggle)} className="text-2xl md:hidden">

@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+@font-face {
+    font-family: 'GilroyRegular';
+    src: url('./assets/fonts/Gilroy-Regular.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: 'GilroyBlack';
+    src: url('./assets/fonts/Gilroy-Black.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: 'GilroyBold';
+    src: url('./assets/fonts/Gilroy-Bold.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: 'GilroyMedium';
+    src: url('./assets/fonts/Gilroy-Medium.ttf') format(truetype);
+}
+
+/* *{
+    font-family: 'GilroyRegular';
+} */
