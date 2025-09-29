@@ -4,7 +4,7 @@ import { RecipeContext } from "../context/DataContext";
 const Recipes = () => {
   const { recipe } = useContext(RecipeContext);
   return (
-    <div className="py-5 px-4">
+    <div className="py-20 px-4">
       <h1 className=" text-2xl font-medium">Latest Recipes</h1>
       <div id="recipe-container">
         {recipe.length > 0 ?
