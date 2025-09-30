@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { RecipeContext } from "../context/DataContext";
+import AddRecipe from "./AddRecipe";
+ 
 
 const Nav = () => {
   const [toggle, setToggle] = useState(false);
+  const {recipe, setRecipe , setShowBtn , showBtn} = useContext(RecipeContext)
   return (
-    <div className="w-full  bg-zinc-800 fixed md:flex md:justify-between md:px-10  md:pl-[7%]">
+    <div className="w-full z-[999]  bg-zinc-800 fixed md:flex md:justify-between md:px-10  md:pl-[7%]">
       <div id="nav-data" className="p-5 md:px-2 flex flex-row-reverse md:flex-row md:w-[35%] xl:w-[25%] items-center gap-2 justify-between ">
         <FontAwesomeIcon className="text-2xl" icon={faUser} />
         <h1 className="text-red-300 font-['GilroyBold'] text-2xl  ">
@@ -29,9 +33,11 @@ const Nav = () => {
             e.isActive
               ? "px-4 py-1 bg-red-400 active:scale-[0.9]"
               : "bg-red-300 px-4 py-1"
-          }
-          to="/create_recipe"
-          onClick={() => setToggle(false)}
+          } 
+          onClick={() => {
+            setToggle(false)
+            setShowBtn(!showBtn)
+          }}
         >
           Create recipe{" "}
         </NavLink>
@@ -71,6 +77,11 @@ const Nav = () => {
           product
         </NavLink>
       </div>
+
+          {
+            showBtn ? <AddRecipe setShowBtn={setShowBtn}/> : ""
+          }
+      
     </div>
   );
 };

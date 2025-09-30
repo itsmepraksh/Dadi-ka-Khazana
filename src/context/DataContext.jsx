@@ -3,6 +3,8 @@ import { createContext, useEffect, useState } from "react";
 export const RecipeContext = createContext();
 
 const DataContext = ({ children }) => {
+  
+  const [showBtn, setShowBtn] = useState(false)
   const [recipe, setRecipe] = useState(() => {
     try {
       const storedRecipes = localStorage.getItem("recipe");
@@ -21,7 +23,7 @@ const DataContext = ({ children }) => {
   // const [isLoggedIn, setIsLoggedIn] = useState([]);
 
   return (
-    <RecipeContext.Provider value={{ recipe, setRecipe }}>
+    <RecipeContext.Provider value={{ recipe, setRecipe , showBtn , setShowBtn }}>
       {children}
     </RecipeContext.Provider>
   );

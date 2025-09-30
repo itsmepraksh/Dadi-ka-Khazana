@@ -5,8 +5,7 @@ import About from "../pages/About";
 import Contact from "../pages/Contact";
 import Connect from "../pages/Connect";
 import Product from "../pages/Product"; 
-import ProductDetails from "../pages/ProductDetails";
-import CreateRecipe from "../pages/CreateRecipe";
+import ProductDetails from "../pages/ProductDetails"; 
 import Recipes from "../pages/Recipes";
 import LoginRegisterPage from "../pages/LoginRegisterPage";
 
@@ -21,7 +20,7 @@ const MainRoutes = () => {
       <Route path="/product" element={<Product/>} /> 
       <Route path="/recipes" element={<Recipes/>} />
       <Route path="/product/detail/:name" element={<ProductDetails/>} />
-      <Route path="/create_recipe" element={<CreateRecipe/>} />  
+      {/* <Route path="/create_recipe" element={<CreateRecipe/>} />   */}
       <Route path="/login" element={<LoginRegisterPage/>}/>
     </Routes>
   );

@@ -3,15 +3,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import FeatureRecipeCard from "../components/FeatureRecipeCard";
 import PopularRecipeCard from "../components/PopularRecipeCard";
+import CreateRecipe from "../components/AddRecipe";
+import { useContext } from "react";
+import { RecipeContext } from "../context/DataContext";
 
 const Home = () => {
   const navigate = useNavigate();
+  const {setShowBtn} = useContext(RecipeContext)
   return (
-    <div className="py-20 pl-5 md:pl-[7%]">
+    <div className="py-20 pl-5 md:pl-[7%] relative w-full">
       <section
         id="hero-section"
         className=" h-[75vh] overflow-hidden bg-cover bg-bottom md:bg-[10%_60%] lg:bg-[20%_70%] rounded-2xl
-         bg-[url('https://images.unsplash.com/photo-1710091691777-3115088962c4?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]"
+         bg-[url('https://images.unsplash.com/photo-1728910156510-77488f19b152?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]"
       >
         <div id="blur-bg" className="bg-black/20 flex h-full w-full">
           <div id="hero-data" className="mt-auto pl-5 md:pl-[7%] py-5 ">
@@ -90,29 +94,50 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="popular" className="py-10"> 
+      <section id="popular" className="py-10">
         <h1 className="text-2xl font-['GilroyBold'] pb-4">Popular Recipes</h1>
         <div id="popular-recipe-box" className="flex overflow-x-scroll gap-4">
-          <PopularRecipeCard imgSrc={"https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} 
-          recipeName={"Biryani"}
-          recipeDesc={"Fragrant rice dish with meat and spices"}
+          <PopularRecipeCard
+            imgSrc={
+              "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            }
+            recipeName={"Biryani"}
+            recipeDesc={"Fragrant rice dish with meat and spices"}
           />
-           <PopularRecipeCard imgSrc={"https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} 
-          recipeName={"Biryani"}
-          recipeDesc={"Fragrant rice dish with meat and spices"}
+          <PopularRecipeCard
+            imgSrc={
+              "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            }
+            recipeName={"Biryani"}
+            recipeDesc={"Fragrant rice dish with meat and spices"}
           />
-           <PopularRecipeCard imgSrc={"https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} 
-          recipeName={"Biryani"}
-          recipeDesc={"Fragrant rice dish with meat and spices"}
+          <PopularRecipeCard
+            imgSrc={
+              "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            }
+            recipeName={"Biryani"}
+            recipeDesc={"Fragrant rice dish with meat and spices"}
           />
-
-
-
-          
         </div>
       </section>
 
-
+      <section id="nuska" className="pr-5">
+        <div
+          id="dadi_ka_nuskha"
+          className="h-[40vh] bg-cover  rounded-lg flex flex-col px-5
+          bg-[url('https://images.unsplash.com/photo-1758082265634-c360a7504f3b?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]"
+        >
+          <p className="mt-auto font-bold text-shadow-lg ">Dadi ka Nuskha</p>
+          <h1 className="font-['GilroyBold'] text-shadow-lg text-2xl pb-5">Quick Tip: Use fresh herbs for extra flavor</h1>
+        </div>
+        <div id="add-recipe" className="py-4 text-center">
+          <h1 className="text-3xl py-3 font-bold tracking-wider">Share Your Culinary Creations</h1>
+          <button 
+          onClick={()=>setShowBtn(true)}
+          className="py-3 px-4 bg-red-400 active:scale-[0.95] rounded transition font-['GilroyRegular'] font-bold text-white/80 ">Add Your Recipe</button>
+        </div>
+      </section>
+ 
     </div>
   );
 };
