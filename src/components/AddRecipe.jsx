@@ -31,7 +31,7 @@ const AddRecipe = () => {
     //         <button type='submit' className='bg-blue-400 py-1 active:scale-[0.9]'>Submit</button>
     //     </form>
     // </div>
-    <section className="p-4 absolute bg-zinc-900 w-full h-[90vh] z-[99] top-10  flex flex-col">
+    <section className="p-4 absolute bg-zinc-900 w-full h-[90vh] z-[99] top-15  flex flex-col">
       <small
       onClick={()=>setShowBtn(false)}
        className="ml-auto border-[1px] border-white text-xs text-zinc-300 p-1">close</small>

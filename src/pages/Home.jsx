@@ -2,8 +2,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import FeatureRecipeCard from "../components/FeatureRecipeCard";
-import PopularRecipeCard from "../components/PopularRecipeCard";
-import CreateRecipe from "../components/AddRecipe";
+import PopularRecipeCard from "../components/PopularRecipeCard"; 
 import { useContext } from "react";
 import { RecipeContext } from "../context/DataContext";
 
