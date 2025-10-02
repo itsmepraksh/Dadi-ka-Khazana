@@ -9,7 +9,7 @@ const Recipes = () => {
       <div id="recipe-container">
         {recipe.length > 0 ?
          recipe.map((rep) => (
-          <div id="recipe-content" className="p-4">
+          <div id="recipe-content" className="p-4" key={rep?.id}>
             <img
               className="h-[40vh] w-full object-cover rounded-xl"
               src={rep?.imgUrl || "https://images.unsplash.com/photo-1570299792061-8b78ae15915f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
@@ -55,13 +55,12 @@ const Recipes = () => {
       </div>
 
 
-      {/* 
-       <div id="recipe-content" className="p-4">
-            <img
-              className="h-[40vh] w-full object-cover rounded-xl"
-              src={rep?.imgUrl || "https://images.unsplash.com/photo-1570299792061-8b78ae15915f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
-              alt=""
-            />
+      
+       <div id="recipe-content" className=" border-[1px] border-zinc-700 rounded-xl overflow-hidden">
+            <div className="h-[40vh] w-full bg-cover bg-center
+            bg-[url('https://images.unsplash.com/photo-1570299792061-8b78ae15915f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]">
+
+            </div> 
             <div id="recipe-details" className=" pt-5 flex flex-col gap-2">
               <div id="rating">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
               <div
@@ -95,7 +94,7 @@ const Recipes = () => {
                 </div>
               </div>
             </div>
-          </div> */}
+          </div>
     </div>
   );
 };
