@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { RecipeContext } from "../context/DataContext";
@@ -9,22 +9,24 @@ import AddRecipe from "./AddRecipe";
 const Nav = () => {
   const [toggle, setToggle] = useState(false);
   const {recipe, setRecipe , setShowBtn , showBtn} = useContext(RecipeContext)
+
+  const navigate = useNavigate()
   return (
     <div className="w-full z-[999]  bg-zinc-800 fixed md:flex md:justify-between md:px-10  md:pl-[7%]">
       <div id="nav-data" className="p-5 md:px-2 flex flex-row-reverse md:flex-row md:w-[35%] xl:w-[25%] items-center gap-2 justify-between ">
-        <FontAwesomeIcon className="text-2xl" icon={faUser} />
+        <FontAwesomeIcon onClick={()=>navigate('/profile')} className="text-2xl" icon={faUser} />
         <h1 className="text-red-300 font-['GilroyBold'] text-2xl  ">
           Dadi ka Kazana
         </h1>
-        <h2 onClick={() => setToggle(!toggle)} className="text-2xl md:hidden">
+        <h2 onClick={() =>setToggle(!toggle)} className="text-2xl md:hidden">
           &#9776;
         </h2>
       </div>
 
-      <div id="nav-links"
+      <div id="nav-links-mobile"
         className={
           toggle
-            ? "absolute top-20 z-[99] bg-red-400/90 h-[88vh]  w-full flex flex-col  md:flex-row justify-center items-center gap-4 p-5  font-fmedium "
+            ? "absolute top-18 z-[99] bg-red-400/90 h-[88vh]  w-full flex flex-col  md:flex-row justify-center items-center gap-4 p-5  font-fmedium "
             : "hidden md:flex w-[50%] md:w-[65%]  justify-center items-center gap-3 xl:gap-10 text-sm"
         }
       >
@@ -62,13 +64,7 @@ const Nav = () => {
         >
           contact
         </NavLink>
-        <NavLink
-          className={(e) => (e.isActive ? "text-red-300" : "")}
-          to="/connect"
-          onClick={() => setToggle(false)}
-        >
-          connect
-        </NavLink>
+         
         <NavLink
           className={(e) => (e.isActive ? "text-red-300" : "")}
           to="/product"

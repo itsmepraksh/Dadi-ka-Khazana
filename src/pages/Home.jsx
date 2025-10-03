@@ -6,8 +6,7 @@ import PopularRecipeCard from "../components/PopularRecipeCard";
 import { useContext } from "react";
 import { RecipeContext } from "../context/DataContext";
 
-const Home = () => {
-  const navigate = useNavigate();
+const Home = () => { 
   const {setShowBtn} = useContext(RecipeContext)
   return (
     <div className="py-20 pl-5 md:pl-[7%] relative w-full">
@@ -30,7 +29,7 @@ const Home = () => {
                 Explore Recipes
               </button>
               <FontAwesomeIcon
-                onClick={() => navigate("/create_recipe")}
+                onClick={()=>setShowBtn(true)}
                 icon={faPlus}
                 className="bg-zinc-300/30 p-4 rounded-xl active:scale-[0.95] transition"
               />

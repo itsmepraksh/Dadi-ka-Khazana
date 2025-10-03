@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form"
 import { RecipeContext } from "../context/DataContext";
+import { useNavigate } from "react-router-dom";
 
  
 
@@ -8,7 +9,7 @@ const AddRecipe = () => {
 
   const {recipe , setRecipe , setShowBtn} = useContext(RecipeContext);
 
-
+  const navigate = useNavigate()
 
     const {register,reset , handleSubmit , formState:{errors}} = useForm();
 
