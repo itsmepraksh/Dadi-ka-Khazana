@@ -8,6 +8,7 @@ import { RecipeContext } from "../context/DataContext";
 
 const Home = () => { 
   const {setShowBtn} = useContext(RecipeContext)
+  const navigate = useNavigate();
   return (
     <div className="py-20 pl-5 md:pl-[7%] relative w-full">
       <section
@@ -25,7 +26,9 @@ const Home = () => {
               Discover and share delicious recipes from around the world.
             </p>
             <div id="hero-cta-btn" className="flex gap-2 md:gap-4">
-              <button className="bg-red-400 w-65 md:w-2/3 py-3 text-lg font-medium rounded-xl active:scale-[0.98] transition">
+              <button 
+              onClick={()=>navigate("/recipes")}
+              className="bg-red-400 w-65 md:w-2/3 py-3 text-lg font-medium rounded-xl active:scale-[0.98] transition">
                 Explore Recipes
               </button>
               <FontAwesomeIcon
