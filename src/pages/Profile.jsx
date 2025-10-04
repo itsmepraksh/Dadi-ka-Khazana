@@ -1,7 +1,13 @@
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
+
+  
+
+  const navigate = useNavigate()
   return (
     <div className="py-20 px-5">
       <h1 className="text-center">Profile</h1>
@@ -22,7 +28,9 @@ const Profile = () => {
         <button className="bg-red-400 rounded-lg w-40 py-2 active:scale-[0.95] transition">
           Add Post
         </button>
-        <button className="bg-zinc-700 rounded-lg w-40 py-2 active:scale-[0.95] transition">
+        <button 
+        onClick={()=>{}}
+        className="bg-zinc-700 rounded-lg w-40 py-2 active:scale-[0.95] transition">
           Logout
         </button>
       </div>
@@ -50,8 +58,10 @@ const Profile = () => {
           <small className="text-zinc-400 ">
             Looks like you haven't added anything to your cart yet.
           </small>
-          <button className="bg-red-400 rounded-lg w-full py-2 active:scale-[0.95] transition">
-            Browse Recipes
+          <button
+          onClick={()=>navigate('/product')}
+          className="bg-red-400 rounded-lg w-full py-2 active:scale-[0.95] transition">
+            Browse Products
           </button>
         </div>
       </div>

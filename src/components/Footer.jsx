@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 const Footer = () => {
   return (
-    <div className='font-[GilroyRegular] py-10 rounded-lg bg-zinc-600/70 text-zinc-300 text-center'>
+    <div className='font-[GilroyRegular] mt-auto  py-10 rounded-lg bg-zinc-600/70 text-zinc-300 text-center'>
         <div id="foot-link" className=' flex justify-around md:justify-evenly  '>
             <Link>About</Link>
             <Link>Contact</Link>
