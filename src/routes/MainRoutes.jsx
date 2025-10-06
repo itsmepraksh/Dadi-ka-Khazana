@@ -14,6 +14,8 @@ import { RecipeContext } from "../context/DataContext";
 const MainRoutes = () => {
   const { isLoggedIn } = useContext(RecipeContext);
 
+  console.log(isLoggedIn)
+
   return (
     <Routes>
       <Route path="/" element={<Home/>} />
@@ -22,9 +24,8 @@ const MainRoutes = () => {
       <Route path="/contact" element={<Contact />} /> 
       <Route path="/product" element={<Product/>} /> 
       <Route path="/recipes" element={<Recipes/>} />
-      <Route path="/product/detail/:name" element={<ProductDetails/>} /> 
-      <Route path="/login" element={<LoginRegisterPage/>}/>
-      <Route path="/profile" element={ isLoggedIn ? <Profile/> : <Navigate to={"/login"}/>} />
+      <Route path="/product/detail/:name" element={<ProductDetails/>} />  
+      <Route path="/profile" element={ isLoggedIn ? <Profile/> : <LoginRegisterPage/>} />
     </Routes>
   );
 };

@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { RecipeContext } from "../context/DataContext";
 
 const LoginRegisterPage = () => {
   const [isClicked, setIsClicked] = useState(false);
+
+  const {setIsLoggedIn} = useContext(RecipeContext)
 
   const {
     handleSubmit,
@@ -11,13 +15,97 @@ const LoginRegisterPage = () => {
     formState: { errors },
   } = useForm();
 
-  const registerHandler = (data) => {
-    console.log(data);
+  const generateToken = (email)=>{
+    return btoa(email + "_" + new Date().getTime())
+  } 
+
+  const encryptPassword = (password)=>{
+    return btoa(password + "_" + new Date().getTime())
+  }
+
+  const decryptPassword = (password)=>{
+    return atob(password)
+  }
+
+  const registerHandler = ({ username, email, password }) => {
+
+    // console.log(username, email, password);
+
+    let user_name = username.trim().toLowerCase();
+    let user_email = email.trim().toLowerCase();
+    let user_password = password.trim().toLowerCase();
+
+
+
+    // const isExists = localStorage.getItem("userCredentials") 
+    // console.log(isExists)
+
+    try {
+
+      if (!user_email || !user_name || !user_password) throw new Error("invalid data");
+
+      const isExists = JSON.parse(localStorage.getItem("userCredentials"))
+
+      if(isExists && isExists.user_email === user_email) throw new Error("Credentials Exists")
+
+      console.log(isExists)
+
+      user_password = encryptPassword(user_password)
+
+      const userCredentials = { user_name, user_email, user_password }
+
+      localStorage.setItem("userCredentials", JSON.stringify(userCredentials))
+
+      const token = generateToken(user_email);
+
+      localStorage.setItem("token",token)
+      setIsLoggedIn(true)
+
+      toast.success("Registration successful!");
+
+    } catch (err) {
+      console.error(err)
+      toast.error(err.message || "Registration failed !");
+    } 
+
     reset();
   };
 
-  const loginHandler = (data) => {
-    console.log(data);
+  const loginHandler = ({email, password}) => {
+ 
+    let user_email = email.trim().toLowerCase();
+    let user_password = password.trim().toLowerCase();
+
+    try {
+
+      if( !user_email || !user_password) throw new Error("Invalid Credentials");
+
+      const isExists = JSON.parse(localStorage.getItem("userCredentials"));
+      if(!isExists) throw new Error("Invalid Credentials");
+
+      if(isExists && isExists.user_email !== user_email) throw new Error("Email or Password gone wrong!");
+
+      console.log(decryptPassword(isExists.user_password))
+
+      const verifyPassword = decryptPassword(isExists.user_password).split('_') 
+      console.log(verifyPassword)
+
+      if(verifyPassword[0] !== user_password) throw new Error("Email or Password gone wrong!");
+
+      
+
+      const token = generateToken(isExists.user_email)
+
+      localStorage.setItem("token",token)
+
+      setIsLoggedIn(true)
+      toast.success("LoggedIn successfully!")
+      
+    } catch (err) {
+      console.error(err);
+      toast.error(err.message || "Login Failed")
+    }
+    
     reset();
   };
 

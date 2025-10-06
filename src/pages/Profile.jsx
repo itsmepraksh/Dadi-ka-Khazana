@@ -1,13 +1,25 @@
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { RecipeContext } from "../context/DataContext";
 
 const Profile = () => {
-
-  
+  const {setIsLoggedIn} = useContext(RecipeContext)
 
   const navigate = useNavigate()
+
+  const LogoutBtn = ()=>{
+    console.log('its working')
+
+    localStorage.setItem("token","") 
+    setIsLoggedIn(false)
+
+    toast.success("Logout sucessfully!")
+  }
+
+
   return (
     <div className="py-20 px-5">
       <h1 className="text-center">Profile</h1>
@@ -29,7 +41,7 @@ const Profile = () => {
           Add Post
         </button>
         <button 
-        onClick={()=>{}}
+        onClick={()=>LogoutBtn()}
         className="bg-zinc-700 rounded-lg w-40 py-2 active:scale-[0.95] transition">
           Logout
         </button>
