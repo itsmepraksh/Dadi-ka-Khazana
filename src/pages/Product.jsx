@@ -1,12 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import ProductItem from "../components/ProductItem";
+import { useContext, useEffect } from "react";
+import { RecipeContext } from "../context/DataContext";
 
 const Product = () => {
   const navHandler = (e) => {
     navigate(`/product/detail/${e}`);
   };
 
+  const {cart} = useContext(RecipeContext)
+
+  console.log(cart)
+
   const navigate = useNavigate();
+
+  
+  
 
   return (
     <div className="py-20 px-5">
@@ -22,7 +31,7 @@ const Product = () => {
       
         <ProductItem
           productName={"Organic Olive Oil"}
-          productPrice={"₹199"}
+          productPrice={"199"}
           isSponsored={true}
           productSrc={
             "https://images.unsplash.com/photo-1642189941430-7073f85d7140?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -30,7 +39,7 @@ const Product = () => {
         />
         <ProductItem
           productName={"Stainless Steel Pan"}
-          productPrice={"₹999"}
+          productPrice={"999"}
           // isSponsored={true}
           productSrc={
             "https://images.unsplash.com/photo-1698939586636-98209ecf8516?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -38,7 +47,7 @@ const Product = () => {
         />
         <ProductItem
           productName={"Artisan Sea Salt"}
-          productPrice={"₹299"}
+          productPrice={"299"}
           // isSponsored={true}
           productSrc={
             "https://images.unsplash.com/photo-1737103602872-7b9ebd830ac4?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -46,7 +55,7 @@ const Product = () => {
         />
         <ProductItem
           productName={"Wooden Cutting Board"}
-          productPrice={"₹499"}
+          productPrice={"499"}
           // isSponsored={true}
           productSrc={
             "https://images.unsplash.com/photo-1638726302333-96ed1da83773?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

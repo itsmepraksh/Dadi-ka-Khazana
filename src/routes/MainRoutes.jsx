@@ -10,11 +10,13 @@ import LoginRegisterPage from "../pages/LoginRegisterPage";
 import Profile from "../pages/Profile";
 import { useContext } from "react"; 
 import { RecipeContext } from "../context/DataContext";
+import Cart from "../pages/Cart";
+import Checkout from "../pages/Checkout";
 
 const MainRoutes = () => {
   const { isLoggedIn } = useContext(RecipeContext);
 
-  console.log(isLoggedIn)
+  // console.log(isLoggedIn)
 
   return (
     <Routes>
@@ -24,6 +26,8 @@ const MainRoutes = () => {
       <Route path="/contact" element={<Contact />} /> 
       <Route path="/product" element={<Product/>} /> 
       <Route path="/recipes" element={<Recipes/>} />
+      <Route path="/cart" element={<Cart/>}/>
+      <Route path="/checkout" element={<Checkout/>}/>
       <Route path="/product/detail/:name" element={<ProductDetails/>} />  
       <Route path="/profile" element={ isLoggedIn ? <Profile/> : <LoginRegisterPage/>} />
     </Routes>

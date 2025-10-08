@@ -6,14 +6,16 @@ import { toast } from "react-toastify";
 import { RecipeContext } from "../context/DataContext";
 
 const Profile = () => {
-  const {setIsLoggedIn} = useContext(RecipeContext)
+  const { setIsLoggedIn, cart } = useContext(RecipeContext)
+
+
 
   const navigate = useNavigate()
 
-  const LogoutBtn = ()=>{
+  const LogoutBtn = () => {
     console.log('its working')
 
-    localStorage.setItem("token","") 
+    localStorage.setItem("token", "")
     setIsLoggedIn(false)
 
     toast.success("Logout sucessfully!")
@@ -22,7 +24,7 @@ const Profile = () => {
 
   return (
     <div className="py-20 px-5">
-      <h1 className="text-center">Profile</h1>
+      <h1 className="text-center text-xl font-['GilroyRegular']">Profile</h1>
       <div
         id="profile-info"
         className="flex flex-col items-center justify-center py-10"
@@ -40,9 +42,9 @@ const Profile = () => {
         <button className="bg-red-400 rounded-lg w-40 py-2 active:scale-[0.95] transition">
           Add Post
         </button>
-        <button 
-        onClick={()=>LogoutBtn()}
-        className="bg-zinc-700 rounded-lg w-40 py-2 active:scale-[0.95] transition">
+        <button
+          onClick={() => LogoutBtn()}
+          className="bg-zinc-700 rounded-lg w-40 py-2 active:scale-[0.95] transition">
           Logout
         </button>
       </div>
@@ -64,18 +66,47 @@ const Profile = () => {
 
       <div id="user-cart" className="py-10">
         <h1 className="font-['GilroyBold']">Your Cart</h1>
-        <div className="py-5 text-center flex flex-col items-center gap-4">
-          <FontAwesomeIcon className="text-2xl" icon={faCartShopping} />
-          <h2 className="pt-2">Your cart is empty</h2>
-          <small className="text-zinc-400 ">
-            Looks like you haven't added anything to your cart yet.
-          </small>
+        {cart.length != 0 ? (<div className="px-2">
+
+
+          <div id="itm-box" className="flex gap-2 py-5 px-2">
+
+            {cart.map((itm, idx) => (
+              <div key={idx} id="cartItm" className="bg-white w-13 h-13 overflow-hidden rounded">
+                {console.log(itm)}
+                <img src={itm.productSrc} className="h-full w-full object-cover object-center" alt="cartItm-img" />
+              </div>
+
+            ))}
+          </div>
+
+         <div className="flex justify-between py-2">
+          <p className="text-zinc-400 text-sm">{cart.length} items</p>
+          <p>₹999.00</p>
+         </div>
           <button
-          onClick={()=>navigate('/product')}
-          className="bg-red-400 rounded-lg w-full py-2 active:scale-[0.95] transition">
-            Browse Products
+            onClick={() => navigate('/cart')}
+            className="bg-red-400 rounded-lg w-full py-2 active:scale-[0.95] transition">
+            View Cart
           </button>
-        </div>
+
+
+        </div>)
+          :
+          (<div className="py-5 text-center flex flex-col items-center gap-4">
+            <FontAwesomeIcon className="text-2xl" icon={faCartShopping} />
+            <h2 className="pt-2">Your cart is empty</h2>
+            <small className="text-zinc-400 ">
+              Looks like you haven't added anything to your cart yet.
+            </small>
+            <button
+              onClick={() => navigate('/product')}
+              className="bg-red-400 rounded-lg w-full py-2 active:scale-[0.95] transition">
+              Browse Products
+            </button>
+          </div>)
+        }
+
       </div>
     </div>
   );

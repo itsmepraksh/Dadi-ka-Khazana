@@ -20,26 +20,37 @@ const DataContext = ({ children }) => {
     }
   });
 
+  const [cart, setCart] = useState(()=>{
+    try {
+      const stored = localStorage.getItem("cart");
+      return stored ? JSON.parse(stored) : [];
+    } catch (err) {
+      console.error("Cart load failed : ",err)
+      return [];
+    }
+  }) 
+
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  console.log(isLoggedIn)
+  // console.log(isLoggedIn)
 
   useEffect(() => {
 
     // localStorage.setItem("userCredentials", "")
     const token = localStorage.getItem('token')
     localStorage.setItem("recipe", JSON.stringify(recipe));
-
+    localStorage.setItem("cart",JSON.stringify(cart))
+ 
 
     if (!token) setIsLoggedIn(false)
     else setIsLoggedIn(true)
-  }, [recipe])
+  }, [recipe,cart])
 
 
 
 
 
   return (
-    <RecipeContext.Provider value={{ recipe, setRecipe, showBtn, setShowBtn, isLoggedIn, setIsLoggedIn }}>
+    <RecipeContext.Provider value={{ recipe, setRecipe, showBtn, setShowBtn, isLoggedIn, setIsLoggedIn,cart,setCart }}>
       {children}
     </RecipeContext.Provider>
   );

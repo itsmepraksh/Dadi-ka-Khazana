@@ -1,6 +1,46 @@
- 
+import { useContext } from "react";
+import { RecipeContext } from "../context/DataContext";
+import { toast } from "react-toastify";
 
-const ProductItem = ({productSrc,productName,productPrice,isSponsored}) => {
+
+
+const ProductItem = ({ productSrc, productName, productPrice, isSponsored }) => {
+
+  const { cart, setCart , isLoggedIn } = useContext(RecipeContext)
+
+  const cartHandler = () => {
+
+    // console.log(isLoggedIn)
+
+    const productDets = {
+      productName,
+      productPrice,
+      productSponsored: isSponsored ? isSponsored : false,
+      productSrc
+    }
+
+
+    try {
+
+      if(!isLoggedIn) throw new Error('LogIn first!') ;
+ 
+      const copyCart = [...cart]
+      copyCart.push(productDets)
+      setCart(copyCart)
+      
+    } catch (err) {
+      console.error(err)
+      toast.error(err.message)
+    }
+
+
+    // console.log(productDets)
+
+
+
+
+
+  }
   return (
     <div
       id="product-item"
@@ -12,10 +52,12 @@ const ProductItem = ({productSrc,productName,productPrice,isSponsored}) => {
         alt=""
       />
       <div id="itm-data">
-        {isSponsored && (<p className="text-red-400 text-xs">sponsored</p>)}    
+        {isSponsored && (<p className="text-red-400 text-xs">sponsored</p>)}
         <h1 className="py-1">{productName}</h1>
-        <p className="text-sm text-zinc-300 pb-2">{productPrice}</p>
-        <button className="bg-red-400 w-40 py-2 rounded-3xl text-xs active:scale-[0.95] transition">
+        <p className="text-sm text-zinc-300 pb-2">₹{productPrice}</p>
+        <button
+          onClick={() => cartHandler()}
+          className="bg-red-400 w-40 py-2 rounded-3xl text-xs active:scale-[0.95] transition">
           Add to Cart
         </button>
       </div>
