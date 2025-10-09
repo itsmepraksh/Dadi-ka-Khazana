@@ -15,7 +15,7 @@ const Nav = () => {
     <div className="w-full z-[999]  bg-zinc-800 fixed md:flex md:justify-between md:px-10  md:pl-[7%]">
       <div id="nav-data" className="p-5 md:px-2 flex flex-row-reverse md:flex-row md:w-[35%] xl:w-[25%] items-center gap-2 justify-between ">
         <FontAwesomeIcon onClick={()=>navigate('/profile')} className="text-2xl" icon={faUser} />
-        <h1 className="text-red-300 font-['GilroyBold'] text-2xl  ">
+        <h1 onClick={()=>navigate('/')} className="text-red-300 font-['GilroyBold'] text-2xl  ">
           Dadi ka Kazana
         </h1>
         <h2 onClick={() =>setToggle(!toggle)} className="text-2xl md:hidden">

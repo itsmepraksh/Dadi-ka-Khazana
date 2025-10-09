@@ -5,6 +5,7 @@ import { faStar, faStarHalf } from "@fortawesome/free-regular-svg-icons";
 
 const Recipes = () => {
   const { recipe } = useContext(RecipeContext);
+  
   return (
     <div className="py-20 px-4">
       <h1 className=" text-2xl font-medium pb-4">Latest Recipes</h1>

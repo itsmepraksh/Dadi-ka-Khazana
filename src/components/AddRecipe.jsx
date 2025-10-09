@@ -2,25 +2,30 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form"
 import { RecipeContext } from "../context/DataContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
- 
+
 
 const AddRecipe = () => {
 
-  const {recipe , setRecipe , setShowBtn} = useContext(RecipeContext);
+  const {isLoggedIn, recipe, setRecipe, setShowBtn } = useContext(RecipeContext);
 
   const navigate = useNavigate()
 
-    const {register,reset , handleSubmit , formState:{errors}} = useForm();
+  const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
-    const submitHandler = (data)=>{
-        console.log(data)
+  const recipeHandler = (data) => {
+    console.log(data)
 
-        const copyRecipe = [...recipe];
-        copyRecipe.push(data);
-        setRecipe(copyRecipe);
-        reset()
-    }
+    if(!isLoggedIn) return( toast.error('LogIn first!'), setShowBtn(false) ,navigate('/login'))
+
+
+    const copyRecipe = [...recipe];
+    copyRecipe.push(data);
+    setRecipe(copyRecipe);
+    reset()
+    toast.success('recipe added sucessfully!')
+  }
   return (
     // <div className='p-5'>
     //     <h1>Share your dadi ki recipe</h1>
@@ -32,47 +37,61 @@ const AddRecipe = () => {
     //         <button type='submit' className='bg-blue-400 py-1 active:scale-[0.9]'>Submit</button>
     //     </form>
     // </div>
-    <section className="p-4 absolute bg-zinc-900 w-full h-[90vh] z-[99] top-15  flex flex-col">
+    <section className="p-4 absolute bg-zinc-900 w-full h-fit z-[99] top-15  flex flex-col">
       <small
-      onClick={()=>setShowBtn(false)}
-       className="ml-auto border-[1px] border-white text-xs text-zinc-300 p-1">close</small>
-        <form  className="flex flex-col gap-y-4">
+        onClick={() => setShowBtn(false)}
+        className="ml-auto border-[1px] border-white text-xs text-zinc-300 p-1">close</small>
+      <form
+        onSubmit={handleSubmit(recipeHandler)}
+        className="flex flex-col gap-y-4">
         <label className="flex flex-col gap-y-2" >
           <p >Recipe Name</p>
-          <input type="text" 
-          placeholder="e.g, Spicy Thai Basil Chicken" 
-          className="bg-zinc-700 p-3 rounded-lg text-sm"
+          <input
+            {...register("recipeName", { required: true })}
+            type="text"
+            placeholder="e.g, Spicy Thai Basil Chicken"
+            className="bg-zinc-700 p-3 rounded-lg text-sm"
           />
+          {errors.recipeName && <small className="font-[GilroyRegular] text-red-300">This is required</small>}
         </label>
-        
+
         <label className="flex flex-col gap-y-2" >
           <p >Recipe Image</p>
-          <input type="text" 
-          placeholder="e.g, Spicy Thai Basil Chicken" 
-          className="bg-zinc-700 p-3 rounded-lg text-sm"
+          <input
+            {...register("recipeImage", { required: true })}
+            type="text"
+            placeholder="e.g, Spicy Thai Basil Chicken"
+            className="bg-zinc-700 p-3 rounded-lg text-sm"
           />
+          {errors.recipeImage && <small className="font-[GilroyRegular] text-red-300">This is required</small>}
         </label>
-        
+
         <label className="flex flex-col gap-y-2" >
-          <p>Ingredients</p> 
-          <textarea rows="3"
-           placeholder="e.g, Spicy Thai Basil Chicken"
-           className="bg-zinc-700 p-3 rounded-lg text-sm"></textarea>
+          <p>Ingredients</p>
+          <textarea
+            {...register("ingredients", { required: true })}
+            rows="3"
+            placeholder="e.g, Spicy Thai Basil Chicken"
+            className="bg-zinc-700 p-3 rounded-lg text-sm"></textarea>
+            {errors.ingredients && <small className="font-[GilroyRegular] text-red-300">This is required</small>}
         </label>
-        
+
         <label className="flex flex-col gap-y-2" >
           <p >Instructions</p>
-          <textarea rows="5" 
-          placeholder="e.g, Spicy Thai Basil Chicken" 
-          className="bg-zinc-700 p-3 rounded-lg text-sm"
+          <textarea
+            {...register("instructions", { required: true })}
+            rows="5"
+            placeholder="e.g, Spicy Thai Basil Chicken"
+            className="bg-zinc-700 p-3 rounded-lg text-sm"
           ></textarea>
+          {errors.instructions && <small className="font-[GilroyRegular] text-red-300">This is required</small>}
         </label>
 
-        <button className="bg-red-400 font-['GilroyBold'] py-3 rounded-lg active:scale-[0.95] transition">create</button>
+        <button type="submit" className="bg-red-400 font-['GilroyBold'] py-3 rounded-lg active:scale-[0.95] transition">create</button>
 
-        </form>
+      </form>
 
-      </section>
+    </section>
   )
 }
 
