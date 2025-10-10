@@ -18,16 +18,16 @@ const Product = () => {
   
 
   return (
-    <div className="py-20 px-5">
-      <h1 className="text-center text-xl font-['GilroyRegular']">Products</h1>
-      <div id="product-nav" className="flex overflow-x-scroll gap-x-3 py-3">
+    <div className="py-20 px-5 md:px-[7%]">
+      <h1 className="text-center text-xl md:text-2xl font-['GilroyRegular']">Products</h1>
+      <div id="product-nav" className="flex overflow-x-scroll gap-x-3 py-3 md:py-6">
         <p className="px-4 py-1 bg-red-400 rounded-4xl">All</p>
         <p className="px-4 py-1 bg-zinc-700 rounded-4xl">Ingredients</p>
         <p className="px-4 py-1 bg-zinc-700 rounded-4xl">Cookware</p>
         <p className="px-4 py-1 bg-zinc-700 rounded-4xl">Accessories</p>
       </div>
 
-      <div id="product-item-box" className=" py-5 flex flex-col gap-4">
+      <div id="product-item-box" className=" py-5 flex flex-col lg:flex-row lg:flex-wrap gap-4    ">
       
         <ProductItem
           productName={"Organic Olive Oil"}

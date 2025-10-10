@@ -87,6 +87,10 @@ const AddRecipe = () => {
           {errors.instructions && <small className="font-[GilroyRegular] text-red-300">This is required</small>}
         </label>
 
+        {/* <label >
+          <p>Rating</p>
+        </label> */}
+
         <button type="submit" className="bg-red-400 font-['GilroyBold'] py-3 rounded-lg active:scale-[0.95] transition">create</button>
 
       </form>

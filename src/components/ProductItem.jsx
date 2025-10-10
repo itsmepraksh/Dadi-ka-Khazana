@@ -9,16 +9,12 @@ const ProductItem = ({ productSrc, productName, productPrice, isSponsored }) => 
   const { cart, setCart , isLoggedIn } = useContext(RecipeContext)
 
   const cartHandler = () => {
-
-    // console.log(isLoggedIn)
-
     const productDets = {
       productName,
       productPrice,
       productSponsored: isSponsored ? isSponsored : false,
       productSrc
     }
-
 
     try {
 
@@ -33,31 +29,25 @@ const ProductItem = ({ productSrc, productName, productPrice, isSponsored }) => 
       toast.error(err.message)
     }
 
-
     // console.log(productDets)
-
-
-
-
-
   }
   return (
     <div
       id="product-item"
-      className="flex justify-around gap-4 bg-zinc-700 p-4 rounded-xl"
+      className="flex justify-around gap-4 bg-zinc-700 p-4 md:py-6 rounded-xl shrink-[0]"
     >
       <img
-        className="w-20 aspect-1/1 object-cover object-top rounded"
+        className="w-20 md:w-25 aspect-1/1 object-cover object-top rounded"
         src={productSrc}
         alt=""
       />
-      <div id="itm-data">
+      <div id="itm-data" className="flex flex-col">
         {isSponsored && (<p className="text-red-400 text-xs">sponsored</p>)}
-        <h1 className="py-1">{productName}</h1>
+        <h1 className="py-1 lg:w-33 xl:w-25">{productName}</h1>
         <p className="text-sm text-zinc-300 pb-2">₹{productPrice}</p>
         <button
           onClick={() => cartHandler()}
-          className="bg-red-400 w-40 py-2 rounded-3xl text-xs active:scale-[0.95] transition">
+          className="bg-red-400 w-40 lg:w-30 xl:w-25 py-2 mt-auto rounded-3xl text-xs active:scale-[0.95] transition">
           Add to Cart
         </button>
       </div>

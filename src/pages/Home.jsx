@@ -13,7 +13,7 @@ const Home = () => {
     <div className="py-20 pl-5 md:pl-[7%] relative w-full">
       <section
         id="hero-section"
-        className=" h-[75vh] overflow-hidden bg-cover bg-bottom md:bg-[10%_60%] lg:bg-[20%_70%] rounded-2xl
+        className=" h-[75vh] lg:h-[80vh] overflow-hidden bg-cover bg-bottom md:bg-[10%_60%] lg:bg-[20%_70%] rounded-2xl
          bg-[url('https://images.unsplash.com/photo-1728910156510-77488f19b152?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]"
       >
         <div id="blur-bg" className="bg-black/20 flex h-full w-full">
@@ -125,7 +125,7 @@ const Home = () => {
       <section id="nuska" className="pr-5">
         <div
           id="dadi_ka_nuskha"
-          className="h-[40vh] bg-cover  rounded-lg flex flex-col px-5
+          className="h-[40vh] lg:h-[50vh] bg-cover rounded-lg flex flex-col px-5
           bg-[url('https://images.unsplash.com/photo-1758082265634-c360a7504f3b?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]"
         >
           <p className="mt-auto font-bold text-shadow-lg ">Dadi ka Nuskha</p>
