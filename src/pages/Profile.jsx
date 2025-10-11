@@ -23,7 +23,7 @@ const Profile = () => {
 
 
   return (
-    <div className="py-20 px-5">
+    <div className="py-20 px-5 md:px-[7%]  ">
       <h1 className="text-center text-xl font-['GilroyRegular']">Profile</h1>
       <div
         id="profile-info"
@@ -38,7 +38,7 @@ const Profile = () => {
         <h1 className="font-['GilroyBold'] text-lg py-1">Kanhaji</h1>
         <p className="text-zinc-400 text-sm">kanhaji@radhe.com</p>
       </div>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between lg:justify-center md:w-[50%] md:place-self-center md:gap-5">
         <button className="bg-red-400 rounded-lg w-40 py-2 active:scale-[0.95] transition">
           Add Post
         </button>
@@ -80,13 +80,13 @@ const Profile = () => {
             ))}
           </div>
 
-         <div className="flex justify-between py-2">
+         <div className="flex justify-between py-2 md:py-4">
           <p className="text-zinc-400 text-sm">{cart.length} items</p>
           <p>₹999.00</p>
          </div>
           <button
             onClick={() => navigate('/cart')}
-            className="bg-red-400 rounded-lg w-full py-2 active:scale-[0.95] transition">
+            className="bg-red-400 rounded-lg w-full md:w-1/3 md:place-self-center md:flex md:justify-center py-2 active:scale-[0.95] transition">
             View Cart
           </button>
 

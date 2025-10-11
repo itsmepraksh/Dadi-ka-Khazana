@@ -4,7 +4,7 @@ import PrivacyTerms from "../components/PrivacyTerms"
 
 const Privacy = () => {
   return (
-    <div id='privacy' className='py-20 px-5'>
+    <div id='privacy' className='py-20 px-5 md:px-[7%]'>
         <h1 className=" text-center text-xl font-['GilroyRegular'] ">Privacy Policy</h1>
         <div id="privacy-terms" className="py-4 flex flex-col gap-4">
             <PrivacyTerms

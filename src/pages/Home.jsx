@@ -63,7 +63,7 @@ const Home = () => {
 
       <section id="feature">
         <h1 className="text-2xl font-['GilroyBold'] pb-4">Featured Recipes</h1>
-        <div id="feature-recipes-box" className="flex flex-wrap gap-4">
+        <div id="feature-recipes-box" className="flex flex-wrap gap-4 lg:gap-6 xl:gap-10">
           <FeatureRecipeCard
             imgSrc={
               "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -97,7 +97,7 @@ const Home = () => {
 
       <section id="popular" className="py-10">
         <h1 className="text-2xl font-['GilroyBold'] pb-4">Popular Recipes</h1>
-        <div id="popular-recipe-box" className="flex overflow-x-scroll gap-4">
+        <div id="popular-recipe-box" className="flex overflow-x-scroll gap-4 xl:gap-10">
           <PopularRecipeCard
             imgSrc={
               "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
