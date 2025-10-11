@@ -23,8 +23,8 @@ const AddRecipe = () => {
     const copyRecipe = [...recipe];
     copyRecipe.push(data);
     setRecipe(copyRecipe);
-    reset()
     toast.success('recipe added sucessfully!')
+    reset()
   }
   return ( 
     <section className="p-4 md:px-[7%]  absolute bg-zinc-900 w-full  h-screen overflow-y-scroll  z-[99] top-15 flex flex-col">

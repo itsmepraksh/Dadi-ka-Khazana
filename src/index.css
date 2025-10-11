@@ -20,6 +20,7 @@
     src: url('./assets/fonts/Gilroy-Medium.ttf') format(truetype);
 }
 
-/* *{
-    font-family: 'GilroyRegular';
-} */
+::-webkit-scrollbar {
+  display: none;
+}
+

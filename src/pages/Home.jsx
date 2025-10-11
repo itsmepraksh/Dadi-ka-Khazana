@@ -73,21 +73,21 @@ const Home = () => {
           />
           <FeatureRecipeCard
             imgSrc={
-              "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              "https://images.unsplash.com/photo-1627207644206-a2040d60ecad?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=387"
             }
             recipeName={"Pasta Carbonara"}
             recipeFrom={"Italian"}
           />
           <FeatureRecipeCard
             imgSrc={
-              "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              "https://images.unsplash.com/photo-1623428187442-b633f414aedc?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=464"
             }
             recipeName={"Quinoa Salad"}
             recipeFrom={"Healty"}
           />
           <FeatureRecipeCard
             imgSrc={
-              "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              "https://images.unsplash.com/photo-1751560455942-f859f1215826?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=466"
             }
             recipeName={"Dosa"}
             recipeFrom={"South Indian"}
@@ -100,24 +100,24 @@ const Home = () => {
         <div id="popular-recipe-box" className="flex overflow-x-scroll gap-4 xl:gap-10">
           <PopularRecipeCard
             imgSrc={
-              "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              "https://images.unsplash.com/photo-1690915475414-9aaecfd3ba74?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=387"
+            }
+            recipeName={"Dal Makhani"}
+            recipeDesc={"Creamy, slow-cooked lentils with the magic touch of grandma’s hands."}
+          />
+          <PopularRecipeCard
+            imgSrc={
+              "https://images.unsplash.com/photo-1701579231305-d84d8af9a3fd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=387"
             }
             recipeName={"Biryani"}
             recipeDesc={"Fragrant rice dish with meat and spices"}
           />
           <PopularRecipeCard
             imgSrc={
-              "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              "https://images.unsplash.com/photo-1589647363585-f4a7d3877b10?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1172"
             }
             recipeName={"Biryani"}
-            recipeDesc={"Fragrant rice dish with meat and spices"}
-          />
-          <PopularRecipeCard
-            imgSrc={
-              "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            }
-            recipeName={"Biryani"}
-            recipeDesc={"Fragrant rice dish with meat and spices"}
+            recipeDesc={"Soft paneer cubes simmered in creamy, spiced spinach gravy, straight from grandma’s kitchen."}
           />
         </div>
       </section>

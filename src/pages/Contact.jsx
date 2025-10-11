@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Faq from "../components/Faq";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const {
@@ -17,28 +18,54 @@ const Contact = () => {
     formState: { errors },
   } = useForm();
 
-  const contactHandler = (data) => {};
+  const contactHandler = ({name , email ,message}) => {
+    console.log(name , email , message);
+
+    try {
+      
+      name = name.trim();
+      email = email.trim();
+      message = message.trim();
+
+      if(!name || !email || !message) return ()=> toast.error("invalid data") , reset()
+
+        localStorage.setItem("contactData" , JSON.stringify({name , email , message}))
+        toast.success("Message sent successfully")
+        reset()
+    } catch (err) {
+      toast.error("Something went wrong")
+      console.error(err);
+    }
+  };
 
   return (
     <div className="py-20 px-5 md:px-[7%]  ">
       <h1 className="text-center text-xl md:text-2xl font-['GilroyRegular']">Contact Us</h1>
-      <form className="flex flex-col py-4 gap-y-3">
+      <form
+        onSubmit={handleSubmit(contactHandler)}
+        className="flex flex-col py-4 gap-y-3">
         <input
           type="text"
+          {...register("name", { required: true })}
           placeholder="enter your name"
           className="bg-zinc-700 px-4 py-2 md:py-4 rounded  "
         />
+        {errors.name && (<p className="text-red-300 text-xs">This is required.</p>)}
         <input
           type="text"
+          {...register("email", { required: true })}
           placeholder="enter your email"
           className="bg-zinc-700 px-4 py-2 md:py-4 rounded  "
         />
+        {errors.email && (<p className="text-red-300 text-xs">This is required.</p>)}
         <textarea
           rows={4}
           type="text"
+          {...register("message", { required: true })}
           placeholder="enter your message"
           className="bg-zinc-700 px-4 py-2 md:py-4 rounded resize-none "
         ></textarea>
+        {errors.message && (<p className="text-red-300 text-xs">This is required.</p>)}
 
         <button className="bg-red-400 rounded py-2 md:py-4 font-['GilroyMedium'] text-xs active:scale-[0.95] transition ">
           Send Message
