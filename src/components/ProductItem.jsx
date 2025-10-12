@@ -46,7 +46,7 @@ const ProductItem = ({ productSrc, productName, productPrice, isSponsored }) => 
         <h1 className="py-1 lg:w-33 xl:w-25">{productName}</h1>
         <p className="text-sm text-zinc-300 pb-2">₹{productPrice}</p>
         <button
-          onClick={() => cartHandler()}
+          onClick={() => {cartHandler(),toast.success('Added to Cart!')}}
           className="bg-red-400 w-40 lg:w-30 xl:w-25 py-2 mt-auto rounded-3xl text-xs active:scale-[0.95] transition">
           Add to Cart
         </button>

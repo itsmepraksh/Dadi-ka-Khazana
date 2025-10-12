@@ -18,20 +18,20 @@ const Contact = () => {
     formState: { errors },
   } = useForm();
 
-  const contactHandler = ({name , email ,message}) => {
-    console.log(name , email , message);
+  const contactHandler = ({ name, email, message }) => {
+    // console.log(name, email, message);
 
     try {
-      
+
       name = name.trim();
       email = email.trim();
       message = message.trim();
 
-      if(!name || !email || !message) return ()=> toast.error("invalid data") , reset()
+      if (!name || !email || !message) return () => toast.error("invalid data"), reset()
 
-        localStorage.setItem("contactData" , JSON.stringify({name , email , message}))
-        toast.success("Message sent successfully")
-        reset()
+      localStorage.setItem("contactData", JSON.stringify({ name, email, message }))
+      toast.success("Message sent successfully")
+      reset()
     } catch (err) {
       toast.error("Something went wrong")
       console.error(err);
@@ -43,7 +43,7 @@ const Contact = () => {
       <h1 className="text-center text-xl md:text-2xl font-['GilroyRegular']">Contact Us</h1>
       <form
         onSubmit={handleSubmit(contactHandler)}
-        className="flex flex-col py-4 gap-y-3">
+        className="flex flex-col py-4 gap-y-3 lg:w-1/2 xl:w-[30%] lg:place-self-center lg:py-10">
         <input
           type="text"
           {...register("name", { required: true })}
@@ -71,61 +71,42 @@ const Contact = () => {
           Send Message
         </button>
       </form >
-      <div id="contact-faqs" className="py-5">
-        <h1 className=" text-xl font-['GilroyRegular']">
-          Frequently Asked Questions
-        </h1>
-        <div id="faq-box" className="flex flex-col py-4 gap-y-3">
-          {/* <div id="faq">
-            <div
-              onClick={() => setFaqStatus(!faqStatus)}
-              className="bg-zinc-700 px-4 py-3 rounded text-sm"
-            >
-              <h1 className="flex justify-between items-center py-1 ">
-                <span>How do I search for recipes ? </span>
-                <FontAwesomeIcon
-                  className={faqStatus ? "" : "rotate-[180deg]"}
-                  icon={faChevronUp}
-                />
-              </h1>
+      <div className="lg:flex items-start justify-between  ">
 
-              {faqStatus && (
-                <p className="text-zinc-400">
-                  You can search for recipes using keywords, ingredients, or
-                  dietary preferences in the search bar at the top of the app.
-                </p>
-              )}
-            </div>
-            <p></p>
-          </div> */}
-          <Faq faqQuest={"How do I search for recipes ? "} />
-          <Faq faqQuest={"Can I save my favorite recipes?"} />
-          <Faq faqQuest={"Is there a way to share recipes with friends?"} />
+        <div id="contact-faqs" className="pt-5 lg:w-[50%] xl:w-[55%]">
+          <h1 className=" text-xl font-['GilroyRegular']">
+            Frequently Asked Questions
+          </h1>
+          <div id="faq-box" className="flex flex-col py-4 gap-y-3">
+            <Faq faqQuest={"How do I search for recipes ? "} />
+            <Faq faqQuest={"Can I save my favorite recipes?"} />
+            <Faq faqQuest={"Is there a way to share recipes with friends?"} />
+          </div>
         </div>
-      </div>
-      <div id="contact-part">
-        <h1 className=" text-xl font-['GilroyRegular'] pb-2">
-          Contact Information
-        </h1>
-        <div id="contact-dta" className="">
-          <div className="flex items-center gap-3 text-zinc-300 py-2">
-            <FontAwesomeIcon
-              className="bg-zinc-700 p-2 rounded"
-              icon={faEnvelope}
-            />
-            <span>Email: support@dadikakhazana.com</span>
-          </div>
-          <div className="flex items-center gap-3 text-zinc-300 py-2">
-            <FontAwesomeIcon
-              className="bg-zinc-700 p-2 rounded"
-              icon={faPhone}
-            />
-            <span>Phone: (+91) 123456789</span>
-          </div>
-          <div className="flex items-center gap-3 text-zinc-300 py-2">
-            <FontAwesomeIcon
-              className="bg-zinc-700 p-2 rounded" icon={faInstagram} />
-            <span>Follow us on Instagram</span>
+        <div id="contact-part" className="pt-5 lg:w-[40%] xl:w-[35%]">
+          <h1 className=" text-xl font-['GilroyRegular'] pb-2">
+            Contact Information
+          </h1>
+          <div id="contact-dta" className="">
+            <div className="flex items-center gap-3 text-zinc-300 py-2">
+              <FontAwesomeIcon
+                className="bg-zinc-700 p-2 rounded"
+                icon={faEnvelope}
+              />
+              <span>Email: support@dadikakhazana.com</span>
+            </div>
+            <div className="flex items-center gap-3 text-zinc-300 py-2">
+              <FontAwesomeIcon
+                className="bg-zinc-700 p-2 rounded"
+                icon={faPhone}
+              />
+              <span>Phone: (+91) 123456789</span>
+            </div>
+            <div className="flex items-center gap-3 text-zinc-300 py-2">
+              <FontAwesomeIcon
+                className="bg-zinc-700 p-2 rounded" icon={faInstagram} />
+              <span>Follow us on Instagram</span>
+            </div>
           </div>
         </div>
       </div>

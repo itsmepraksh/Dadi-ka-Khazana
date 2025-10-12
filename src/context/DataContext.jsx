@@ -4,9 +4,7 @@ import { createContext, useEffect, useState } from "react";
 export const RecipeContext = createContext();
 
 const DataContext = ({ children }) => {
-
-
-  // const [loginDta, setLoginDta] = useState([])
+ 
 
   const [showBtn, setShowBtn] = useState(false)
   const [recipe, setRecipe] = useState(() => {

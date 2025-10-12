@@ -110,7 +110,7 @@ const LoginRegisterPage = () => {
   };
 
   return (
-    <div className="py-5 px-4">
+    <div className="py-20 px-4 md:px-[7%] md:py-[12%] lg:w-1/2 flex flex-col lg:place-self-center ">
       <h1 className="text-center text-4xl font-bold">Welcome</h1>
       <p className="text-zinc-400 text-center py-2 text-lg">
         Please login or create an account
