@@ -90,7 +90,7 @@ const Profile = () => {
           </div>
           <button
             onClick={() => navigate('/cart')}
-            className="bg-red-400 rounded-lg w-full md:w-1/3 md:place-self-center md:flex md:justify-center py-2 active:scale-[0.95] transition">
+            className="bg-red-400 rounded-lg w-full md:w-1/3 xl:w-[25%] md:place-self-center   md:flex md:justify-center py-2 active:scale-[0.95] transition">
             View Cart
           </button>
 

@@ -20,7 +20,7 @@ const ProductItem = ({ productSrc, productName, productPrice, isSponsored }) => 
 
       if(!isLoggedIn) throw new Error('LogIn first!') ;
  
-      const copyCart = [...cart]``
+      const copyCart = [...cart]
       copyCart.push(productDets)
       setCart(copyCart)
       toast.success('Added to Cart!')
