@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { RecipeContext } from "../context/DataContext";
 
 const Profile = () => {
-  const { setIsLoggedIn, cart } = useContext(RecipeContext)
+  const { setIsLoggedIn, cart ,setShowBtn} = useContext(RecipeContext)
   const [totalPrice, setTotalPrice] = useState(null)
   const navigate = useNavigate()
 
@@ -44,7 +44,9 @@ const Profile = () => {
         <p className="text-zinc-400 text-sm">kanhaji@radhe.com</p>
       </div>
       <div className="flex items-center justify-between lg:justify-center md:w-[50%] md:place-self-center md:gap-5">
-        <button className="bg-red-400 rounded-lg w-40 py-2 active:scale-[0.95] transition">
+        <button
+        onClick={()=>setShowBtn(true)}
+        className="bg-red-400 rounded-lg w-40 py-2 active:scale-[0.95] transition">
           Add Post
         </button>
         <button

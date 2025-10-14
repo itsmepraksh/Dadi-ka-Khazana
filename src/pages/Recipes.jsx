@@ -1,12 +1,12 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { RecipeContext } from "../context/DataContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck, faStar, faStarHalf } from "@fortawesome/free-regular-svg-icons";
 
 const Recipes = () => {
-  const { recipe, setShowBtn } = useContext(RecipeContext);
+  const { recipe, setShowBtn , setRecipe} = useContext(RecipeContext);
 
-  console.log(recipe);
+ 
 
   return (
     <div className="py-20 px-4 md:px-[7%]">
