@@ -6,9 +6,11 @@ import { toast } from "react-toastify";
 import { RecipeContext } from "../context/DataContext";
 
 const Profile = () => {
-  const { setIsLoggedIn, cart ,setShowBtn} = useContext(RecipeContext)
+  const { setIsLoggedIn, cart, setShowBtn, userPost } = useContext(RecipeContext)
   const [totalPrice, setTotalPrice] = useState(null)
   const navigate = useNavigate()
+
+  // console.log(userPost)
 
   const LogoutBtn = () => {
     // console.log('its working')
@@ -18,14 +20,20 @@ const Profile = () => {
     toast.success("Logout sucessfully!")
   }
 
-
   useEffect(() => {
+    if (userPost.length > 0) {
+      localStorage.setItem("posts", JSON.stringify(userPost))
+    }
 
     if (cart.length > 0) {
       const sum = cart.reduce((acc, itm) => acc + Number(itm.productPrice), 0);
       setTotalPrice(sum)
     } else setTotalPrice(0)
-  }, [cart])
+  }, [cart, userPost])
+
+
+  const userDta = JSON.parse(localStorage.getItem("userCredentials"))
+  // console.log(userDta)
 
   return (
     <div className="py-20 px-5 md:px-[7%]  ">
@@ -40,13 +48,13 @@ const Profile = () => {
             src="https://images.unsplash.com/vector-1758380375259-b6dd11ad9049?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8a3Jpc25hfGVufDB8fDB8fHwy"
           />
         </div>
-        <h1 className="font-['GilroyBold'] text-lg py-1">Kanhaji</h1>
-        <p className="text-zinc-400 text-sm">kanhaji@radhe.com</p>
+        <h1 className="font-['GilroyBold'] text-lg py-1">{userDta.user_name}</h1>
+        <p className="text-zinc-400 text-sm">{userDta.user_email}</p>
       </div>
       <div className="flex items-center justify-between lg:justify-center md:w-[50%] md:place-self-center md:gap-5">
         <button
-        onClick={()=>setShowBtn(true)}
-        className="bg-red-400 rounded-lg w-40 py-2 active:scale-[0.95] transition">
+          onClick={() => setShowBtn(true)}
+          className="bg-red-400 rounded-lg w-40 py-2 active:scale-[0.95] transition">
           Add Post
         </button>
         <button
@@ -56,19 +64,39 @@ const Profile = () => {
         </button>
       </div>
 
+
       <div id="user-post" className="py-10">
         <h1 className="font-['GilroyBold']">Your Posts</h1>
-        <div className="py-5 text-center">
-          <img
-            className="w-full h-60 object-cover rounded-xl"
-            src="https://images.unsplash.com/vector-1753704660092-74a78a0bb852?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-          />
-          <h2 className="pt-2">No posts yet</h2>
-          <small className="text-zinc-400">
-            Share your first recipe with the community
-          </small>
-        </div>
+        {
+          userPost.length > 0
+            ?
+            <div id="user-post-box" className="p-4 flex gap-4 overflow-x-scroll">
+{console.log(userPost)}
+           { userPost.map((postItm,idx)=>( 
+           
+            <div id="user-post" key={idx} className="flex items-center w-72 gap-4 bg-zinc-700 p-2 rounded shrink-[0]">
+                <div id="postImg" className=" w-20 aspect-1/1 overflow-hidden rounded-xl">
+                  <img src={postItm.recipeImage} alt={postItm.recipeName} className="object-cover object-center h-full w-full"/>
+                </div>
+                <div id="user-desc">
+                  <h1>{postItm.recipeName}</h1> 
+                </div>
+              </div>))}
+
+            </div>
+            :
+            <div className="py-5 text-center">
+              <img
+                className="w-full h-60 object-cover rounded-xl"
+                src="https://images.unsplash.com/vector-1753704660092-74a78a0bb852?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+              <h2 className="pt-2">No posts yet</h2>
+              <small className="text-zinc-400">
+                Share your first recipe with the community
+              </small>
+            </div>
+        }
       </div>
 
       <div id="user-cart" className="py-10">
@@ -79,7 +107,7 @@ const Profile = () => {
           <div id="itm-box" className="flex gap-2 py-5 px-2 overflow-x-auto">
 
             {cart.map((itm, idx) => (
-              <div key={idx} id="cartItm" className="bg-white w-13 h-13 overflow-hidden rounded shrink-[0]"> 
+              <div key={idx} id="cartItm" className="bg-white w-13 h-13 overflow-hidden rounded shrink-[0]">
                 <img src={itm.productSrc} className="h-full w-full object-cover object-center" alt="cartItm-img" />
               </div>
 

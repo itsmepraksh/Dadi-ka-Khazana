@@ -43,7 +43,6 @@ const DataContext = ({ children }) => {
     }
   })
 
-
   const [recipe, setRecipe] = useState(() => {
     try {
       const storedRecipes = localStorage.getItem("recipe");
@@ -72,8 +71,6 @@ const DataContext = ({ children }) => {
     }
   });
 
-  
-
   const [cart, setCart] = useState(()=>{
     try {
       const stored = localStorage.getItem("cart");
@@ -96,10 +93,6 @@ const DataContext = ({ children }) => {
     if (!token) setIsLoggedIn(false)
     else setIsLoggedIn(true)
   }, [recipe,cart])
-
-
-
-
 
   return (
     <RecipeContext.Provider value={{ recipe, setRecipe, showBtn, setShowBtn, isLoggedIn, setIsLoggedIn,cart,setCart, userPost, setUserPost }}>
