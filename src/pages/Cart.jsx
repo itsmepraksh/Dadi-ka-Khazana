@@ -40,16 +40,16 @@ const Cart = () => {
     const total = subtotal + shipping;
 
     return (
-        <div className='py-20 px-5 md:px-[7%] lg:w-[85%] xl:w-[60%]  lg:py-[10%] lg:place-self-center'>
+        <div className='py-20 px-5 md:px-[7%] '>
             <h1 className="text-xl font-['GilroyRegular'] flex items-center ">
                 <FontAwesomeIcon
                     onClick={() => navigate(-1)}
                     className="cursor-pointer"
                     icon={faAngleLeft} />
-                <span className="ml-[35%]">Cart</span>
+                <span className="ml-[35%] lg:ml-[45%]">Cart</span>
             </h1>
 
-            <div id="purchaseCart">
+            <div id="purchaseCart" className="lg:w-[50%] xl:w-[30%] lg:place-self-center">
                 {
                     groupedCart.length === 0 ? (
                         <p className="text-center text-gray-400 mt-10">Your cart is empty.</p>

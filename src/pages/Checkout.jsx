@@ -12,6 +12,12 @@ const Checkout = () => {
     const { handleSubmit, register, reset, formState: { errors } } = useForm();
 
     const {cart} = useContext(RecipeContext)
+    console.log(cart) 
+ 
+
+    const subtotal = cart.reduce((acc,itm)=> (Number(itm.productPrice) + acc),0)
+
+    console.log(subtotal)
 
     const [openPayment, setOpenPayment] = useState(null)
 
@@ -21,17 +27,17 @@ const Checkout = () => {
     }
 
     return (
-        <div className="py-20 px-5">
+        <div className="py-20 px-5 md:px-[7%]">
             <h1 className=" text-xl font-['GilroyRegular'] flex items-center ">
                 <FontAwesomeIcon
                     onClick={() => navigate(-1)}
                     className=" text-regular"
                     icon={faAngleLeft} />
 
-                <span className="ml-[30%]">Checkout</span>
+                <span className="ml-[30%] md:ml-[40%] xl:ml-[45%]">Checkout</span>
             </h1>
 
-            <div className="py-4">
+            <div className="py-4 lg:w-[50%] xl:w-[30%] lg:place-self-center">
                 <h1>Shipping Address</h1>
                 <form onSubmit={handleSubmit(cartHandler)} className="py-2 flex flex-wrap gap-4 justify-between">
                     <div className="w-full">
@@ -74,10 +80,10 @@ const Checkout = () => {
                     <div className="w-full">
                         <h1>Order Summary</h1>
                         <div id="order-summary" className="bg-zinc-700 rounded-lg p-4 my-2">
-                            <div className="flex justify-between text-zinc-400 text-sm"><span>Subtotal</span> <span className="text-white">$99.00</span></div>
-                            <div className="flex justify-between text-zinc-400 text-sm"><span>Shipping</span> <span className="text-white">$99.00</span></div>
-                            <div className="flex justify-between text-zinc-400 text-sm"><span>Tax</span> <span className="text-white">$99.00</span></div>
-                            <div className="flex justify-between text-white py-1"><span>Total</span> <span className="text-white">$99.00</span></div>
+                            <div className="flex justify-between text-zinc-400 text-sm"><span>Subtotal</span> <span className="text-white">{subtotal}.00</span></div>
+                            <div className="flex justify-between text-zinc-400 text-sm"><span>Shipping</span> <span className="text-white">{50}.00</span></div>
+                            <div className="flex justify-between text-zinc-400 text-sm"><span>Tax</span> <span className="text-white">{((subtotal*5)/100).toFixed(2)}</span></div>
+                            <div className="flex justify-between text-white py-1"><span>Total</span> <span className="text-white"> { (Number(((subtotal*5)/100).toFixed(2)) + (subtotal + 50)).toFixed(2) }</span></div>
 
                         </div>
                         <button 
